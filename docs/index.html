@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    <script src="https://unpkg.com/@jpmorganchase/perspective/build/perspective.js"></script>
+    <script src="https://unpkg.com/@jpmorganchase/perspective-viewer/build/perspective.view.js"></script>
+    <script src="https://unpkg.com/@jpmorganchase/perspective-viewer-hypergrid/build/hypergrid.plugin.js"></script>
+    <script src="https://unpkg.com/@jpmorganchase/perspective-viewer-highcharts/build/highcharts.plugin.js"></script>
+    
+    <script src="olympics.js"></script>
+
+    <link rel='stylesheet' href="index.css">
+    <link rel='stylesheet' href="https://unpkg.com/@jpmorganchase/perspective-viewer/build/material.css" is="custom-style">
+
+</head>
+
+<body>
+
+  <div id="container">
+
+      <perspective-viewer 
+          row-pivots='["athlete"]'
+          column-pivots='["year"]'
+          columns='["gold","silver","bronze"]'
+          sort='[["gold","desc"]]'>
+
+      </perspective-viewer>
+
+      <perspective-viewer 
+          view="x_bar"
+          row-pivots='["country"]' 
+          columns='["gold"]'
+          sort='[["gold","desc"]]'>
+
+      </perspective-viewer>
+
+      <perspective-viewer
+          view='xy_scatter'
+          row-pivots='["athlete"]'
+          columns='["age","sport","total"]'
+          aggregates='{"total":"sum","age":"avg","sport":"dominant"}'>
+
+      </perspective-viewer>
+
+
+      <perspective-viewer
+          view='x_bar'
+          row-pivots='["year"]' 
+          column-pivots='["country"]'
+          filters='[["country","==","United States"]]'
+          columns='["gold","silver","bronze"]'>
+
+      </perspective-viewer>
+
+  </div>
+  
+</body>
+
+</html>
